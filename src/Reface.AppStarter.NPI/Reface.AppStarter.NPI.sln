@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reface.AppStarter.NPI", "Reface.AppStarter.NPI\Reface.AppStarter.NPI.csproj", "{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CAE86B20-1D88-419A-8E33-9A3A5854A996}
+	EndGlobalSection
+EndGlobal
