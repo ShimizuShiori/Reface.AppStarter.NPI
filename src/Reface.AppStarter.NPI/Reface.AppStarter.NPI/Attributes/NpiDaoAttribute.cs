@@ -11,6 +11,7 @@ namespace Reface.AppStarter.Attributes
     public class NpiDaoAttribute : ImplementorAttribute
     {
         public ISqlCommandDescriptionExecutor Executor { get; set; }
+        public IDbConnectionContextProvider Provider { get; set; }
 
         public override void Intercept(InterfaceInvocationInfo info)
         {
@@ -25,10 +26,10 @@ namespace Reface.AppStarter.Attributes
                 case SqlCommandTypes.Insert:
                 case SqlCommandTypes.Update:
                 case SqlCommandTypes.Delete:
-                    int i = this.Executor.Execute(null, d);
+                    int i = this.Executor.Execute(this.Provider.Provide(), d);
                     break;
                 case SqlCommandTypes.Select:
-                    List<object> list = this.Executor.Select(null, d, entityType);
+                    List<object> list = this.Executor.Select(this.Provider.Provide(), d, entityType);
                     break;
                 default:
                     break;
