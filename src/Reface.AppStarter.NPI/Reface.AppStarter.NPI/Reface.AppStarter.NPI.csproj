@@ -65,7 +65,7 @@
       <HintPath>..\packages\Reface.1.1.0\lib\netstandard2.0\Reface.dll</HintPath>
     </Reference>
     <Reference Include="Reface.AppStarter, Version=0.10.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Reface.AppStarter.1.2.0-beta.1\lib\net461\Reface.AppStarter.dll</HintPath>
+      <HintPath>..\packages\Reface.AppStarter.1.2.1\lib\net461\Reface.AppStarter.dll</HintPath>
     </Reference>
     <Reference Include="Reface.AppStarter.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Reface.AppStarter.Proxy.1.1.1\lib\net461\Reface.AppStarter.Proxy.dll</HintPath>
