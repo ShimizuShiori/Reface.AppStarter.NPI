@@ -98,7 +98,10 @@
   <ItemGroup>
     <Compile Include="AppModules\NpiAppModule.cs" />
     <Compile Include="Attributes\NpiDaoAttribute.cs" />
+    <Compile Include="IDbConnectionContextProvider.cs" />
+    <Compile Include="ISqlCommandDescriptionExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="DbConnectionContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
