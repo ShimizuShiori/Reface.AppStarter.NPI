@@ -5,10 +5,6 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reface.AppStarter.NPI", "Reface.AppStarter.NPI\Reface.AppStarter.NPI.csproj", "{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{6A6DC4D5-34F7-400D-95C6-E40B1B1AE6A2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reface.AppStarter.NPI.Sqlite", "Reface.AppStarter.NPI.Sqlite\Reface.AppStarter.NPI.Sqlite.csproj", "{6A357B6F-0DAE-42F3-91CC-DC616E847F48}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,16 +15,9 @@ Global
 		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF93D2B8-9EAD-4ED3-AA46-FF077B685EAC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6A357B6F-0DAE-42F3-91CC-DC616E847F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6A357B6F-0DAE-42F3-91CC-DC616E847F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6A357B6F-0DAE-42F3-91CC-DC616E847F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6A357B6F-0DAE-42F3-91CC-DC616E847F48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{6A357B6F-0DAE-42F3-91CC-DC616E847F48} = {6A6DC4D5-34F7-400D-95C6-E40B1B1AE6A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CAE86B20-1D88-419A-8E33-9A3A5854A996}
