@@ -7,6 +7,6 @@ namespace Reface.AppStarter.NPI
     public interface ISqlSelectResultHandler
     {
         bool CanHandle(MethodInfo method, Type entityType);
-        object Handle(MethodInfo method, Type entityType, List<object> selectedResult);
+        object Handle(MethodInfo method, Type entityType, IEnumerable<object> selectedResult);
     }
 }

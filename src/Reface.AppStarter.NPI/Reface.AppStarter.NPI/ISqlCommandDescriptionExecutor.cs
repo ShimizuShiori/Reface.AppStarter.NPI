@@ -8,6 +8,6 @@ namespace Reface.AppStarter.NPI
     {
         int Execute(DbConnectionContext dbConnectionContext, SqlCommandDescription sqlCommand);
 
-        List<object> Select(DbConnectionContext dbConnectionContext, SqlCommandDescription sqlCommand, Type entityType);
+        IEnumerable<object> Select(DbConnectionContext dbConnectionContext, SqlCommandDescription sqlCommand, Type entityType);
     }
 }

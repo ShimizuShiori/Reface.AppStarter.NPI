@@ -18,7 +18,7 @@ namespace Reface.AppStarter.NPI.SelectResultHandlers
             return canHandle;
         }
 
-        public object Handle(MethodInfo method, Type entityType, List<object> selectedResult)
+        public object Handle(MethodInfo method, Type entityType, IEnumerable<object> selectedResult)
         {
             Type type = typeof(List<>).MakeGenericType(new Type[] { entityType });
             object result = Activator.CreateInstance(type);

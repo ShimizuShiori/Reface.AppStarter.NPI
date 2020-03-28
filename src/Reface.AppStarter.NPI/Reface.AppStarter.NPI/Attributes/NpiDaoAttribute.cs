@@ -36,7 +36,7 @@ namespace Reface.AppStarter.Attributes
                     }
                     break;
                 case SqlCommandTypes.Select:
-                    List<object> list = this.Executor.Select(this.Provider.Provide(), d, entityType);
+                    IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, entityType);
                     foreach (var handler in this.SelectResultHandlers)
                     {
                         if (!handler.CanHandle(info.Method, entityType)) continue;
