@@ -116,6 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Reface.AppStarter.NPI.nuspec" />
     <None Include="Resources\StateMachines\Delete.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
