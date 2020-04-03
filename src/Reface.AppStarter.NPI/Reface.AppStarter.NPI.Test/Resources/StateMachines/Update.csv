@@ -1,9 +1,0 @@
-,Word,And,Or,By,End
-Start,SetField,,,,
-SetField,,NextSetField,,Condition,
-NextSetField,SetField,,,,
-Condition,ConditionField,,,,
-ConditionField,ConditionOperator,NextCondition,NextCondition,,End
-ConditionOperator,,NextCondition,NextCondition,,End
-NextCondition,ConditionField,,,,
-End,,,,,

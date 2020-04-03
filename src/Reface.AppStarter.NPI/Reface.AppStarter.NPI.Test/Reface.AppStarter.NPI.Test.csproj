@@ -71,7 +71,7 @@
       <HintPath>..\packages\Reface.1.1.0\lib\netstandard2.0\Reface.dll</HintPath>
     </Reference>
     <Reference Include="Reface.AppStarter, Version=0.10.11.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Reface.AppStarter.1.5.0\lib\net461\Reface.AppStarter.dll</HintPath>
+      <HintPath>..\packages\Reface.AppStarter.1.5.1\lib\net461\Reface.AppStarter.dll</HintPath>
     </Reference>
     <Reference Include="Reface.AppStarter.Proxy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Reface.AppStarter.Proxy.1.3.0\lib\net461\Reface.AppStarter.Proxy.dll</HintPath>
@@ -86,10 +86,10 @@
       <HintPath>..\packages\Reface.EventBus.3.2.0\lib\net40\Reface.EventBus.dll</HintPath>
     </Reference>
     <Reference Include="Reface.NPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Reface.NPI.1.1.4\lib\net461\Reface.NPI.dll</HintPath>
+      <HintPath>..\packages\Reface.NPI.2.0.1\lib\net461\Reface.NPI.dll</HintPath>
     </Reference>
     <Reference Include="Reface.StateMachine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Reface.StateMachine.1.1.1\lib\net461\Reface.StateMachine.dll</HintPath>
+      <HintPath>..\packages\Reface.StateMachine.1.2.0\lib\net461\Reface.StateMachine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -118,26 +118,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Resources\StateMachines\Delete.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\StateMachines\Select.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Resources\StateMachines\Update.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Reface.AppStarter.NPI\Reface.AppStarter.NPI.csproj">
       <Project>{ff93d2b8-9ead-4ed3-aa46-ff077b685eac}</Project>
       <Name>Reface.AppStarter.NPI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Resources\OperatorMappings\SqlServer.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

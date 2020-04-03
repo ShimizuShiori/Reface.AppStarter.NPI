@@ -1,7 +1,0 @@
-,Word,And,Or,By,End
-Start,,,,Condition,
-Condition,ConditionField,,,,
-ConditionField,ConditionOperator,NextCondition,NextCondition,,End
-ConditionOperator,,NextCondition,NextCondition,,End
-NextCondition,ConditionField,,,,
-End,,,,,
