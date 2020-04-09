@@ -13,7 +13,7 @@ namespace Reface.AppStarter.NPI
         {
             DbConnection = dbConnection;
             this.Id = Guid.NewGuid();
-            Console.WriteLine($"{nameof(DbConnectionContext)}.Ctor : Id = {Id}");
+            DebugLogger.Debug($"{nameof(DbConnectionContext)}.Ctor : Id = {Id}");
         }
 
         public void BeginTran()
