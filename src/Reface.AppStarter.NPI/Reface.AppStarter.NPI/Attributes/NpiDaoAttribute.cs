@@ -1,5 +1,7 @@
 ﻿using Reface.AppStarter.NPI;
+using Reface.AppStarter.NPI.Events;
 using Reface.AppStarter.Proxy;
+using Reface.EventBus;
 using Reface.NPI;
 using Reface.NPI.Generators;
 using System;
@@ -15,6 +17,8 @@ namespace Reface.AppStarter.Attributes
         public IEnumerable<ISqlSelectResultHandler> SelectResultHandlers { get; set; }
         public IEnumerable<ISqlExecuteResultHandler> ExecuteResultHandlers { get; set; }
 
+        public IEventBus EventBus { get; set; }
+
         public override void Intercept(InterfaceInvocationInfo info)
         {
             Type typeOfIDao = typeof(INpiDao<>);
@@ -22,7 +26,7 @@ namespace Reface.AppStarter.Attributes
 
             ISqlCommandGenerator g = NpiServicesCollection.GetService<ISqlServerCommandGenerator>();
             SqlCommandDescription d = g.Generate(info.Method, info.Arguments);
-
+            this.EventBus.Publish(new SqlCommandDescriptionGeneratedEvent(this, d));
             switch (d.Type)
             {
                 case SqlCommandTypes.Insert:
