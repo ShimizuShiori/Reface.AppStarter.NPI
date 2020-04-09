@@ -108,13 +108,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Daos\IOrderDao.cs" />
     <Compile Include="Daos\IUserDao.cs" />
     <Compile Include="DaoTests.cs" />
     <Compile Include="DbConnectionContextProvider.cs" />
+    <Compile Include="DefaultUserServiceTests.cs" />
     <Compile Include="EmptySqlComandDescriptionExecutor.cs" />
+    <Compile Include="Entities\Order.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="OrderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DefaultOrderService.cs" />
+    <Compile Include="Services\DefaultUserService.cs" />
+    <Compile Include="Services\IOrderService.cs" />
+    <Compile Include="Services\IUserService.cs" />
     <Compile Include="TestAppModule.cs" />
+    <Compile Include="TestConnection.cs" />
+    <Compile Include="TestDbTran.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

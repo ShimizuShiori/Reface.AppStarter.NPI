@@ -9,6 +9,11 @@ namespace Reface.AppStarter.NPI
         public IDbConnection DbConnection { get; private set; }
         public IDbTransaction DbTransaction { get; private set; }
 
+        /// <summary>
+        /// 嵌套的深度
+        /// </summary>
+        private int deep = 0;
+
         public DbConnectionContext(IDbConnection dbConnection)
         {
             DbConnection = dbConnection;
@@ -18,11 +23,21 @@ namespace Reface.AppStarter.NPI
 
         public void BeginTran()
         {
-            this.DbTransaction = this.DbConnection.BeginTransaction();
+            if (deep++ == 0)
+            {
+                DebugLogger.Info($"BeginTran Deep = {deep} , Id = {Id} ");
+                this.DbTransaction = this.DbConnection.BeginTransaction();
+                return;
+            }
+
+            DebugLogger.Warning($"SkipBeginTran Deep = {deep} , Id = {Id}");
         }
 
         public void RollbackTran()
         {
+            if (this.DbTransaction == null) return;
+            deep = 0;
+            DebugLogger.Info($"RollbackTran Deep = {deep} , Id = {Id} ");
             this.DbTransaction.Rollback();
             this.DbTransaction.Dispose();
             this.DbTransaction = null;
@@ -30,6 +45,13 @@ namespace Reface.AppStarter.NPI
 
         public void CommitTran()
         {
+            if (this.DbTransaction == null) return;
+            if (deep-- != 1)
+            {
+                DebugLogger.Warning($"SkipCommitTran Deep =  {deep} , Id = {Id}");
+                return;
+            }
+            DebugLogger.Info($"CommitTran Deep = {deep} , Id = {Id} ");
             this.DbTransaction.Commit();
             this.DbTransaction.Dispose();
             this.DbTransaction = null;
