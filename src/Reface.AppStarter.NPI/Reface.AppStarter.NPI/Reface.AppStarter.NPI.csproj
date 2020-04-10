@@ -104,6 +104,7 @@
     <Compile Include="Attributes\TransactionAttribute.cs" />
     <Compile Include="DapperParameters.cs" />
     <Compile Include="DapperSqlComandDescriptionExecutor.cs" />
+    <Compile Include="Errors\MustProvideSingletoneInstanceException.cs" />
     <Compile Include="Events\SqlCommandDescriptionGeneratedEvent.cs" />
     <Compile Include="ExecuteResultHandlers\BooleanExecuteResultHandler.cs" />
     <Compile Include="ExecuteResultHandlers\IntExecuteResultHandler.cs" />

@@ -17,7 +17,10 @@ namespace Reface.AppStarter.NPI.Test.Services
         [Transaction]
         public void Create(Order order)
         {
-            this.userService.DoSomeThingInTran();
+            if (order.ThrowError)
+                this.userService.DoSomeThingWillThrowAnException();
+            else
+                this.userService.DoSomeThingInTran();
         }
     }
 }

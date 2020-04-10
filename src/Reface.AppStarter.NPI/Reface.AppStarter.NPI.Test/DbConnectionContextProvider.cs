@@ -2,7 +2,6 @@
 
 namespace Reface.AppStarter.NPI.Test
 {
-    [Component]
     public class DbConnectionContextProvider : IDbConnectionContextProvider
     {
         private readonly DbConnectionContext dbConnectionContext;

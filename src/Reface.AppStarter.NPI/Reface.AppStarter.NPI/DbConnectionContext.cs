@@ -23,7 +23,7 @@ namespace Reface.AppStarter.NPI
 
         public void BeginTran()
         {
-            if (deep++ == 0)
+            if (++deep == 1)
             {
                 DebugLogger.Info($"BeginTran Deep = {deep} , Id = {Id} ");
                 this.DbTransaction = this.DbConnection.BeginTransaction();
@@ -35,7 +35,10 @@ namespace Reface.AppStarter.NPI
 
         public void RollbackTran()
         {
-            if (this.DbTransaction == null) return;
+            if (this.DbTransaction == null) {
+                DebugLogger.Warning($"SkipRollbackTran Tran is null");
+                return;
+            }
             deep = 0;
             DebugLogger.Info($"RollbackTran Deep = {deep} , Id = {Id} ");
             this.DbTransaction.Rollback();
@@ -45,7 +48,11 @@ namespace Reface.AppStarter.NPI
 
         public void CommitTran()
         {
-            if (this.DbTransaction == null) return;
+            if (this.DbTransaction == null)
+            {
+                DebugLogger.Warning($"SkipCommitTran Tran is null");
+                return;
+            }
             if (deep-- != 1)
             {
                 DebugLogger.Warning($"SkipCommitTran Deep =  {deep} , Id = {Id}");

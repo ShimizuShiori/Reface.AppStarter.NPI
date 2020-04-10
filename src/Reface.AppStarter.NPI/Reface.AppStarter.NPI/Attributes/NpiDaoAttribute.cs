@@ -1,4 +1,5 @@
 ﻿using Reface.AppStarter.NPI;
+using Reface.AppStarter.NPI.Errors;
 using Reface.AppStarter.NPI.Events;
 using Reface.AppStarter.Proxy;
 using Reface.EventBus;
@@ -19,8 +20,17 @@ namespace Reface.AppStarter.Attributes
 
         public IEventBus EventBus { get; set; }
 
+        private void AssertProviderIsValid()
+        {
+            var context_1 = this.Provider.Provide();
+            var context_2 = this.Provider.Provide();
+            if (context_1 == context_2) return;
+            throw new MustProvideSingletoneInstanceException(this.Provider.GetType());
+        }
+
         public override void Intercept(InterfaceInvocationInfo info)
         {
+            this.AssertProviderIsValid();
             Type typeOfIDao = typeof(INpiDao<>);
             Type entityType = info.Method.DeclaringType.GetInterface(typeOfIDao.FullName).GetGenericArguments()[0];
 

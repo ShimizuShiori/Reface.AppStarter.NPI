@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Reface.AppStarter.NPI.Test.Entities
+﻿namespace Reface.AppStarter.NPI.Test.Entities
 {
     public class Order
     {
-
+        public bool ThrowError { get; set; } = false;
     }
 }

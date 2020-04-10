@@ -5,18 +5,12 @@ namespace Reface.AppStarter.NPI.Test
 {
     [ComponentScanAppModule]
     [NpiAppModule]
-    public class TestAppModule : AppModule
+    public class TestAppModule2 : AppModule
     {
-        [ReplaceCreator]
-        public ISqlCommandDescriptionExecutor GetSqlCommandDescriptionExecutor()
-        {
-            return new EmptySqlComandDescriptionExecutor();
-        }
-
         [ComponentCreator]
         public IDbConnectionContextProvider GetDbConnectionContextProvider()
         {
-            return new DbConnectionContextProvider();
+            return new DbConnectionContextProvider2();
         }
     }
 }
