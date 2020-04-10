@@ -25,6 +25,8 @@ namespace Reface.AppStarter.NPI
         {
             if (++deep == 1)
             {
+                if (this.DbConnection.State != ConnectionState.Open)
+                    this.DbConnection.Open();
                 DebugLogger.Info($"BeginTran Deep = {deep} , Id = {Id} ");
                 this.DbTransaction = this.DbConnection.BeginTransaction();
                 return;
@@ -35,7 +37,8 @@ namespace Reface.AppStarter.NPI
 
         public void RollbackTran()
         {
-            if (this.DbTransaction == null) {
+            if (this.DbTransaction == null)
+            {
                 DebugLogger.Warning($"SkipRollbackTran Tran is null");
                 return;
             }

@@ -11,6 +11,11 @@ namespace Reface.AppStarter.NPI.Test
             this.dbConnectionContext = new DbConnectionContext(new TestConnection());
         }
 
+        public void Dispose()
+        {
+            DebugLogger.Info("DbConnectionContextProvider.Dispose");
+        }
+
         public DbConnectionContext Provide()
         {
             return this.dbConnectionContext;
