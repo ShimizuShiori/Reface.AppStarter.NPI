@@ -15,5 +15,7 @@ namespace Reface.AppStarter.NPI.Test.Daos
         void Insert(User user);
         bool UpdateNameById(string name, int id);
         int DeleteByState(int state);
+
+        int CountByState(int state);
     }
 }

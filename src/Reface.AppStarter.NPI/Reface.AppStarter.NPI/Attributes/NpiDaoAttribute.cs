@@ -7,6 +7,7 @@ using Reface.NPI;
 using Reface.NPI.Generators;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Reface.AppStarter.Attributes
 {
@@ -50,11 +51,19 @@ namespace Reface.AppStarter.Attributes
                     }
                     break;
                 case SqlCommandTypes.Select:
-                    IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, entityType);
-                    foreach (var handler in this.SelectResultHandlers)
                     {
-                        if (!handler.CanHandle(info.Method, entityType)) continue;
-                        info.ReturnValue = handler.Handle(info.Method, entityType, list);
+                        IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, entityType);
+                        foreach (var handler in this.SelectResultHandlers)
+                        {
+                            if (!handler.CanHandle(info.Method, entityType)) continue;
+                            info.ReturnValue = handler.Handle(info.Method, entityType, list);
+                        }
+                    }
+                    break;
+                case SqlCommandTypes.Count:
+                    {
+                        IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, typeof(long));
+                        info.ReturnValue = Convert.ChangeType(list.FirstOrDefault(), info.Method.ReturnType);
                     }
                     break;
                 default:

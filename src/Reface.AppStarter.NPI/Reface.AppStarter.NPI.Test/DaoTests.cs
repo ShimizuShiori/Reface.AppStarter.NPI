@@ -54,5 +54,12 @@ namespace Reface.AppStarter.NPI.Test
             Assert.AreEqual(10, row);
         }
 
+        [TestMethod]
+        public void TestCount()
+        {
+            IUserDao userDao = this.ComponentContainer.CreateComponent<IUserDao>();
+            int count = userDao.CountByState(1);
+            Assert.AreEqual(100, count);
+        }
     }
 }

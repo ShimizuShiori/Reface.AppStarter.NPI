@@ -14,7 +14,10 @@ namespace Reface.AppStarter.NPI.Test
 
         public IEnumerable<object> Select(DbConnectionContext dbConnectionContext, SqlCommandDescription sqlCommand, Type entityType)
         {
-            Console.WriteLine(sqlCommand.ToString());
+            if (sqlCommand.SqlCommand.Contains("COUNT"))
+                return new List<object>() { 100 };
+
+
             return new List<object>() { Activator.CreateInstance(entityType), Activator.CreateInstance(entityType) };
         }
     }
