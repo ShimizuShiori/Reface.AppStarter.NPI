@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace Reface.AppStarter.NPI.SelectResultHandlers
 {
-    [Component]
+    //[Component]
     public class FirstRowFirstCellSelectResultHandler : ISqlSelectResultHandler
     {
         private readonly static Type[] baseTypes = new Type[]
@@ -32,7 +32,7 @@ namespace Reface.AppStarter.NPI.SelectResultHandlers
 
         public object Handle(MethodInfo method, Type entityType, IEnumerable<object> selectedResult)
         {
-            return selectedResult.FirstOrDefault();
+            return Convert.ChangeType(selectedResult.FirstOrDefault(), entityType);
         }
     }
 }

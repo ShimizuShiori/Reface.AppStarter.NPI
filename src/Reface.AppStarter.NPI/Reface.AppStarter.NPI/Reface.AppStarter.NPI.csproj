@@ -77,7 +77,7 @@
       <HintPath>..\packages\Reface.EventBus.3.2.0\lib\net40\Reface.EventBus.dll</HintPath>
     </Reference>
     <Reference Include="Reface.NPI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Reface.NPI.2.2.0\lib\net461\Reface.NPI.dll</HintPath>
+      <HintPath>..\packages\Reface.NPI.2.3.0\lib\net461\Reface.NPI.dll</HintPath>
     </Reference>
     <Reference Include="Reface.StateMachine, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Reface.StateMachine.1.2.0\lib\net461\Reface.StateMachine.dll</HintPath>
@@ -118,6 +118,7 @@
     <Compile Include="SelectResultHandlers\FirstRowFirstCellSelectResultHandler.cs" />
     <Compile Include="SelectResultHandlers\ListSelectResultHandler.cs" />
     <Compile Include="SelectResultHandlers\SingleSelectResultHandler.cs" />
+    <Compile Include="SelectResultHandlers\VoidSelectResultHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

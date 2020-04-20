@@ -1,6 +1,8 @@
-﻿using Reface.AppStarter.NPI;
+﻿using Castle.Core.Smtp;
+using Reface.AppStarter.NPI;
 using Reface.AppStarter.NPI.Errors;
 using Reface.AppStarter.NPI.Events;
+using Reface.AppStarter.Predicates;
 using Reface.AppStarter.Proxy;
 using Reface.EventBus;
 using Reface.NPI;
@@ -33,16 +35,17 @@ namespace Reface.AppStarter.Attributes
         {
             this.AssertProviderIsValid();
             Type typeOfIDao = typeof(INpiDao<>);
-            Type entityType = info.Method.DeclaringType.GetInterface(typeOfIDao.FullName).GetGenericArguments()[0];
 
             ISqlCommandGenerator g = NpiServicesCollection.GetService<ISqlServerCommandGenerator>();
             SqlCommandDescription d = g.Generate(info.Method, info.Arguments);
             this.EventBus.Publish(new SqlCommandDescriptionGeneratedEvent(this, d));
-            switch (d.Type)
+
+            if (info.Method.ReturnType == typeof(void))
+                d.Mode = SqlCommandExecuteModes.Execute;
+
+            switch (d.Mode)
             {
-                case SqlCommandTypes.Insert:
-                case SqlCommandTypes.Update:
-                case SqlCommandTypes.Delete:
+                case SqlCommandExecuteModes.Execute:
                     int i = this.Executor.Execute(this.Provider.Provide(), d);
                     foreach (var handler in this.ExecuteResultHandlers)
                     {
@@ -50,25 +53,41 @@ namespace Reface.AppStarter.Attributes
                         info.ReturnValue = handler.Handle(info.Method, i);
                     }
                     break;
-                case SqlCommandTypes.Select:
+                case SqlCommandExecuteModes.Query:
                     {
-                        IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, entityType);
+                        Type returnType = info.Method.ReturnType;
+                        Type itemType;
+                        if (TryGetIEnumerableItemType(returnType, out itemType))
+                        {
+                            returnType = itemType;
+                        }
+
+                        IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, returnType);
                         foreach (var handler in this.SelectResultHandlers)
                         {
-                            if (!handler.CanHandle(info.Method, entityType)) continue;
-                            info.ReturnValue = handler.Handle(info.Method, entityType, list);
+                            if (!handler.CanHandle(info.Method, returnType)) continue;
+                            info.ReturnValue = handler.Handle(info.Method, returnType, list);
                         }
-                    }
-                    break;
-                case SqlCommandTypes.Count:
-                    {
-                        IEnumerable<object> list = this.Executor.Select(this.Provider.Provide(), d, typeof(long));
-                        info.ReturnValue = Convert.ChangeType(list.FirstOrDefault(), info.Method.ReturnType);
                     }
                     break;
                 default:
                     break;
             }
+        }
+
+        private bool TryGetIEnumerableItemType(Type type, out Type itemType)
+        {
+            itemType = null;
+            if (type == typeof(IEnumerable<>))
+            {
+                itemType = type.GetGenericArguments()[0];
+                return true;
+            }
+            var infType = type.GetInterface(typeof(IEnumerable<>).FullName);
+            if (infType == null) return false;
+
+            itemType = infType.GetGenericArguments()[0];
+            return true;
         }
     }
 }
