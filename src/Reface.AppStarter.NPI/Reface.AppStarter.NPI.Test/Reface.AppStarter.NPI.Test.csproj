@@ -124,10 +124,12 @@
     <Compile Include="Services\DefaultUserService.cs" />
     <Compile Include="Services\IOrderService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="SqlServer\SqlServerTest.cs" />
     <Compile Include="TestAppModule.cs" />
     <Compile Include="TestAppModule2.cs" />
     <Compile Include="TestConnection.cs" />
     <Compile Include="TestDbTran.cs" />
+    <Compile Include="TestSqlServerAppModule.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

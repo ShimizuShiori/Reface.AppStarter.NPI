@@ -100,10 +100,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppModules\NpiAppModule.cs" />
+    <Compile Include="AppModules\SqlServerNpiAppModule.cs" />
     <Compile Include="Attributes\NpiDaoAttribute.cs" />
     <Compile Include="Attributes\TransactionAttribute.cs" />
     <Compile Include="DapperParameters.cs" />
-    <Compile Include="DapperSqlComandDescriptionExecutor.cs" />
+    <Compile Include="SqlCommandDescriptionExecutors\DapperSqlComandDescriptionExecutor.cs" />
     <Compile Include="Errors\MustProvideSingletoneInstanceException.cs" />
     <Compile Include="Events\SqlCommandDescriptionGeneratedEvent.cs" />
     <Compile Include="ExecuteResultHandlers\BooleanExecuteResultHandler.cs" />
@@ -119,6 +120,8 @@
     <Compile Include="SelectResultHandlers\ListSelectResultHandler.cs" />
     <Compile Include="SelectResultHandlers\SingleSelectResultHandler.cs" />
     <Compile Include="SelectResultHandlers\VoidSelectResultHandler.cs" />
+    <Compile Include="SqlServer\Configs\SqServerConfig.cs" />
+    <Compile Include="SqlServer\SqlServerDbConnectionContextProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

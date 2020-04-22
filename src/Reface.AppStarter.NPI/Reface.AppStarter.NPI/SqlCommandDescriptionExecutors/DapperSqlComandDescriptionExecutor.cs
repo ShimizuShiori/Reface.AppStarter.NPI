@@ -1,12 +1,10 @@
-﻿using Reface.AppStarter.Attributes;
+﻿using Dapper;
+using Reface.AppStarter.Attributes;
 using Reface.NPI.Generators;
 using System;
 using System.Collections.Generic;
-using Dapper;
-using System.Data.Common;
-using System.Data.SqlClient;
 
-namespace Reface.AppStarter.NPI
+namespace Reface.AppStarter.NPI.SqlCommandDescriptionExecutors
 {
     [Component]
     public class DapperSqlComandDescriptionExecutor : ISqlCommandDescriptionExecutor
