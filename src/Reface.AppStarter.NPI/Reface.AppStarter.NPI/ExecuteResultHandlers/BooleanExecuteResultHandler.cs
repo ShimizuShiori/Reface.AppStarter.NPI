@@ -4,6 +4,10 @@ using System.Reflection;
 
 namespace Reface.AppStarter.NPI.ExecuteResultHandlers
 {
+    /// <summary>
+    /// <see cref="bool"/> 类型的执行结果处理器，
+    /// 影响行数大于 0 就为 true。
+    /// </summary>
     [Component]
     public class BooleanExecuteResultHandler : ISqlExecuteResultHandler
     {

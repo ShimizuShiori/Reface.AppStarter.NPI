@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<package >
-  <metadata>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<metadata>
     <id>Reface.AppStarter.NPI</id>
     <version>2.2.0</version>
     <title>Reface.AppStarter.NPI</title>
@@ -13,4 +13,7 @@
     <copyright>Copyright 2020</copyright>
     <tags>Reface AppModule ORM NPI</tags>
   </metadata>
+  <files>
+    <file src="bin\Debug\Reface.AppStarter.NPI.xml"/>
+  </files>
 </package>

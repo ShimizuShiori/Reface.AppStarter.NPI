@@ -1,15 +1,12 @@
-﻿using Castle.Core.Smtp;
-using Reface.AppStarter.NPI;
+﻿using Reface.AppStarter.NPI;
 using Reface.AppStarter.NPI.Errors;
 using Reface.AppStarter.NPI.Events;
-using Reface.AppStarter.Predicates;
 using Reface.AppStarter.Proxy;
 using Reface.EventBus;
 using Reface.NPI;
 using Reface.NPI.Generators;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Reface.AppStarter.Attributes
 {

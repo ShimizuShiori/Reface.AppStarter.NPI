@@ -5,6 +5,10 @@ using static Dapper.SqlMapper;
 
 namespace Reface.AppStarter.NPI
 {
+    /// <summary>
+    /// Dapper 有着自己的参数转换方式，
+    /// 该类负责将 <see cref="SqlCommandDescription"/> 转换为 Dapper 所需要的参数格式。
+    /// </summary>
     public class DapperParameters : Dictionary<string, object>, IDynamicParameters
     {
         public DapperParameters(SqlCommandDescription description)

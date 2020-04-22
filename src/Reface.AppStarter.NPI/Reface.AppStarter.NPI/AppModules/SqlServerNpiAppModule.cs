@@ -1,24 +1,23 @@
-﻿using Reface.AppStarter.Attributes;
-using Reface.AppStarter.NPI;
-using Reface.AppStarter.NPI.SqlServer;
-using Reface.AppStarter.NPI.SqlServer.Configs;
-
-namespace Reface.AppStarter.AppModules
+﻿namespace Reface.AppStarter.AppModules
 {
-    [ComponentScanAppModule]
-    [AutoConfigAppModule]
+    /// <summary>
+    /// 该模块会将与 SqlServer 有关的组件和配置类注入到 IOC / DI 容器中
+    /// </summary>
+    [ComponentScanAppModule
+        (
+            IncludeNamespaces = new string[]
+            {
+                "Reface.AppStarter.NPI.SqlServer"
+            }
+        )]
+    [AutoConfigAppModule
+        (
+            IncludeNamespaces = new string[] 
+            {
+                "Reface.AppStarter.NPI.SqlServer"
+            }
+        )]
     public class SqlServerNpiAppModule : AppModule
     {
-        [ConfigCreator("SqlServer")]
-        public SqServerConfig GetSqServerConfig()
-        {
-            return new SqServerConfig();
-        }
-
-        [ComponentCreator]
-        public IDbConnectionContextProvider GetDbConnectionContextProvider(SqServerConfig config)
-        {
-            return new SqlServerDbConnectionContextProvider(config);
-        }
     }
 }

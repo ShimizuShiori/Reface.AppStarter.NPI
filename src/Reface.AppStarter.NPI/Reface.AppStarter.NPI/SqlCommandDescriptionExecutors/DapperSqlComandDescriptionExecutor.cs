@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace Reface.AppStarter.NPI.SqlCommandDescriptionExecutors
 {
+    /// <summary>
+    /// 基于 <see cref="Dapper"/> 实现的 <see cref="ISqlCommandDescriptionExecutor"/>
+    /// </summary>
     [Component]
     public class DapperSqlComandDescriptionExecutor : ISqlCommandDescriptionExecutor
     {

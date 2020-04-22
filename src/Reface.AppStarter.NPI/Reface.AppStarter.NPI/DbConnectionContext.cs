@@ -1,12 +1,28 @@
 ﻿using System;
 using System.Data;
+using Reface.AppStarter.NPI.Attributes;
 
 namespace Reface.AppStarter.NPI
 {
+    /// <summary>
+    /// 数据库连接上下文
+    /// </summary>
     public class DbConnectionContext
     {
+        /// <summary>
+        /// 唯一标识
+        /// </summary>
         public Guid Id { get; private set; }
+
+
+        /// <summary>
+        /// 数据库连接
+        /// </summary>
         public IDbConnection DbConnection { get; private set; }
+
+        /// <summary>
+        /// 数据库事务
+        /// </summary>
         public IDbTransaction DbTransaction { get; private set; }
 
         /// <summary>
@@ -21,6 +37,11 @@ namespace Reface.AppStarter.NPI
             DebugLogger.Debug($"{nameof(DbConnectionContext)}.Ctor : Id = {Id}");
         }
 
+        /// <summary>
+        /// 开启事务。
+        /// 由于 <see cref="TransactionAttribute"/> 会存在事务嵌套的问题，
+        /// 对于同一个 <see cref="DbConnectionContext"/> 实例，当事务已经开启，再使用此方法将不会再次开启事务。
+        /// </summary>
         public void BeginTran()
         {
             if (++deep == 1)
@@ -35,6 +56,12 @@ namespace Reface.AppStarter.NPI
             DebugLogger.Warning($"SkipBeginTran Deep = {deep} , Id = {Id}");
         }
 
+        /// <summary>
+        /// 回滚事务。
+        /// 由于 <see cref="TransactionAttribute"/> 会存在事务嵌套的问题，
+        /// 对于是调用了多次的 <see cref="BeginTran"/> 的 <see cref="DbConnectionContext"/> 实例，第一次回滚的调用，就会对所有任务进行回滚。
+        /// 设计意图是，当遇到一个异常时，就回滚所有事务。
+        /// </summary>
         public void RollbackTran()
         {
             if (this.DbTransaction == null)
@@ -49,6 +76,11 @@ namespace Reface.AppStarter.NPI
             this.DbTransaction = null;
         }
 
+        /// <summary>
+        /// 提交事务。
+        /// 由于 <see cref="TransactionAttribute"/> 会存在事务嵌套的问题，
+        /// 因此对于执行了多次 <see cref="BeginTran"/> 的 <see cref="DbConnectionContext"/> 实例，只有第一次开启事务所对应的提交事务，才会真正的提交事务。
+        /// </summary>
         public void CommitTran()
         {
             if (this.DbTransaction == null)

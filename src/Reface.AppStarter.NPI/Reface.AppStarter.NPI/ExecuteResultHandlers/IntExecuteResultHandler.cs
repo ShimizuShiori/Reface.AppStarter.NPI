@@ -3,6 +3,9 @@ using System.Reflection;
 
 namespace Reface.AppStarter.NPI.ExecuteResultHandlers
 {
+    /// <summary>
+    /// 整形的执行结果处理器
+    /// </summary>
     [Component]
     public class IntExecuteResultHandler : ISqlExecuteResultHandler
     {

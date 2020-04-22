@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Reface.AppStarter.NPI.SelectResultHandlers
 {
+    /// <summary>
+    /// 期望返回类型为 <see cref="IList{T}"/> 的处理器
+    /// </summary>
     [Component]
     public class ListSelectResultHandler : ISqlSelectResultHandler
     {

@@ -5,6 +5,7 @@ namespace Reface.AppStarter.NPI.Test
 {
     [ComponentScanAppModule]
     [NpiAppModule]
+    [ProxyAppModule]
     public class TestAppModule : AppModule
     {
         [ReplaceCreator]

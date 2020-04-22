@@ -1,8 +1,10 @@
-﻿using Reface.AppStarter.NPI.SqlServer.Configs;
+﻿using Reface.AppStarter.Attributes;
+using Reface.AppStarter.NPI.SqlServer.Configs;
 using System.Data.SqlClient;
 
 namespace Reface.AppStarter.NPI.SqlServer
 {
+    [Component]
     public class SqlServerDbConnectionContextProvider : IDbConnectionContextProvider
     {
         private readonly SqServerConfig config;
