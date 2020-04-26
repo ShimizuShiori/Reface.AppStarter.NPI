@@ -75,6 +75,7 @@ namespace Reface.AppStarter.Attributes
         private bool TryGetIEnumerableItemType(Type type, out Type itemType)
         {
             itemType = null;
+            if (type == typeof(string)) return false;
             if (type == typeof(IEnumerable<>))
             {
                 itemType = type.GetGenericArguments()[0];
