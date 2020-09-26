@@ -108,6 +108,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\AProxy.cs" />
+    <Compile Include="Daos\IBaseDao.cs" />
     <Compile Include="Daos\IOrderDao.cs" />
     <Compile Include="Daos\IUserDao.cs" />
     <Compile Include="DaoTests.cs" />

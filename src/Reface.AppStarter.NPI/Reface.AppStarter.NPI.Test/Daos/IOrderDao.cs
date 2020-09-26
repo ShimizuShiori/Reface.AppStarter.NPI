@@ -5,9 +5,8 @@ using Reface.NPI;
 namespace Reface.AppStarter.NPI.Test.Daos
 {
     [NpiDao]
-    public interface IOrderDao:INpiDao<Order>
+    public interface IOrderDao : INpiDao<Order>, IBaseDao<Order>
     {
-        void Insert(Order order);
     }
-    
+
 }
